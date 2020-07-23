@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: mynapp-rc
+  name: mynapp-rs
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: mynapp-rc
+      app: mynapp-rs
   template:
     metadata:
       labels:
-        app: mynapp-rc
+        app: mynapp-rs
     spec:
       containers:
       - image: c1t1d0s7/myweb
