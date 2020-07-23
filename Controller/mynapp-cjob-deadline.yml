@@ -1,0 +1,19 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: mynapp-cjob
+spec:
+  schedule: "*/2 * * * *"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: mynapp-job-para
+        spec:
+          restartPolicy: OnFailure
+          containers:
+          - name: mynapp
+            image: busybox
+            command: ["sleep", "60"]
