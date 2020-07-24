@@ -1,0 +1,14 @@
+apiVersion: app/v1
+kind: ReplicaSet
+metadata:
+  name: mynapp-rs-nport
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mynapp-rs-nport
+  template:
+    metadata:
+      labels:
+        app: mynapp-rs-nport
+        
