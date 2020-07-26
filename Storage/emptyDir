@@ -1,0 +1,8 @@
+spec:
+  containers:
+  - volumeMounts:
+    - name: <VOL-NAME>
+        mountPath: <PATH>
+  volumes:
+  - name: <VOL-NAME>
+    emptyDir: {}

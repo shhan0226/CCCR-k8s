@@ -11,4 +11,12 @@ spec:
     metadata:
       labels:
         app: mynapp-rs-nport
+    spec:
+      containers:
+      - name: mynapp
+        image: c1t1d0s7/myweb
+        ports:
+        - name: mynapp-http
+          containerPort: 8080
+
         

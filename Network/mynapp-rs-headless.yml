@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: RelicaSet
+metadata:
+  name: mynapp-rs-headless
+spec:
+  relicas: 3
+  selector:
+    matchLabels:
+      app: mynapp-rs-headless
+  template:
+    metadata:
+      labels:
+        app: mynapp-rs-headless
+    spec:
+      containers:
+      - nmae: mynapp
+        image: c1t1d0s7/myweb
+        prots:
+        - containerPort: 8080
+        
