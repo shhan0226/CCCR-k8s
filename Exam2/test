@@ -1,0 +1,9 @@
+kubectl edit [read path replace] --> livenessPath
+
+kubectl replace
+
+livenessPath --> path /var/local/...
+==> pod restart
+
+readivess--> path /
+==> endpoint access

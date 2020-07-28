@@ -14,7 +14,7 @@ spec:
             key: nodeport
       - name: MESSAGE
         valueFrom:
-          configMapkeyRef:
+          configMapKeyRef:
             name: mynapp-pod-options
             key: message
       args:

@@ -11,8 +11,8 @@ spec:
       mountPath: /etc/nginx/conf.d
     ports:
     - containerPort: 80
-      portocol: TCP
+      protocol: TCP
   volumes:
-  - name: nginx-comporess-config
+  - name: nginx-compress-config
     configMap:
       name: nginx-gzip-config

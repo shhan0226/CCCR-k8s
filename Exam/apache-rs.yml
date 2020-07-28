@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: apache-rc
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: apache-rc
+  template:
+    metadata:
+      labels:
+        app: apache-rc
+    spec:
+      containers:
+      - image: httpd:latest
+        name: apache
+        volumeMounts:
+        - name: apache-config
+          mountPath: /usr/local/apache2/conf/httpd.conf
+          subPath: httpd.conf
+        volumeMounts:
+        - name: apache-html
+          mountPath: /usr/local/apache2/htdocs/index.html
+          subPath: index.html
+        env:
+        - name: WEBPORT
+          value: "8080"      
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+      volumes:
+        - name: apache-config
+          configMap:
+            name: apache-config
+        - name: apache-html
+          configMap:
+            name: apache-html
