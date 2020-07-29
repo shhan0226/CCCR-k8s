@@ -1,0 +1,14 @@
+
+
+
+        RS
+        |
+svc(LB)-Pod(wd)
+
+
+
+
+kubectl create -f mynapp-sts-db.yml
+
+kubectl delete -f mynapp-sts-db.yml
+kubectl delete pvc data-mydb-0

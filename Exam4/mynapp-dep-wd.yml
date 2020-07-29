@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mynapp-dep-wd
+  labels:
+    app: mynapp-dep-wd
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 2
+      maxSurge: 2
+  minReadySeconds: 20
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mynapp-dep-wd
+  template:
+    metadata:
+      labels:
+        app: mynapp-dep-wd
+    spec:
+      containers:
+      - image: wordpress:latest
+        name: mynapp
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        volumeMounts:
+        - name: wd-vol
+          mountPath: /var/www/html
+        env: 
+        - name: WORDPRESS_DB_HOST
+          value: "mynapp-svc-headless"
+        - name: WORDPRESS_DB_USER
+          value: "wp-admin"
+        - name: WORDPRESS_DB_PASSWORD
+          value: "1234"
+        - name: WORDPRESS_DB_NAME
+          value: "wordpress"      
+      volumes:
+      - name: wd-vol
+        persistentVolumeClaim:
+          claimName: mynapp-pvc-dy-cephfs

@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mynapp-pod-db
+  labels:
+    app: mynapp-pod-db
+spec:
+  containers:
+  - name: pod-db
+    image: mariadb:latest
+    ports:
+    - containerPort: 3306
+      protocol: TCP
+    volumeMounts:
+    - name: db-vol
+      mountPath: /var/lib/mysql
+      subPath: mysql
+    env: 
+    - name: MYSQL_ROOT_PASSWORD
+      value: "1234"
+    - name: MYSQL_DATABASE
+      value: "wordpress"
+    - name: MYSQL_USER
+      value: "wp-admin"
+    - name: MYSQL_PASSWORD
+      value: "1234"      
+  volumes:
+  - name: db-vol
+    persistentVolumeClaim:
+      claimName: mynapp-pvc-dy-block

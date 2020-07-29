@@ -1,0 +1,27 @@
+svc(LB)
+  |
+  pod(wd):80 -------------svc(headless):3306
+  |                       |
+  sc:cepfs              pod(db):3306
+                           |
+                           pvc:block
+
+
+
+
+kubectl create -f mynapp-pvc-dy-block.yml;
+kubectl create -f mynapp-pvc-dy-cephfs.yml;
+kubectl create -f mynapp-pod-db.yml;
+kubectl create -f mynapp-pod-wd.yml;
+kubectl create -f mynapp-svc-headless.yml;
+kubectl create -f mynapp-svc-lb.yml 
+
+
+kubectl delete -f mynapp-svc-lb.yml 
+kubectl delete -f mynapp-svc-headless.yml;
+kubectl delete -f mynapp-pod-wd.yml;
+kubectl delete -f mynapp-pod-db.yml;
+kubectl delete -f mynapp-pvc-dy-block.yml;
+kubectl delete -f mynapp-pvc-dy-cephfs.yml;
+
+
