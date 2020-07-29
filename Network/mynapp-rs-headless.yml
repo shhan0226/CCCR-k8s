@@ -1,9 +1,9 @@
 apiVersion: apps/v1
-kind: RelicaSet
+kind: ReplicaSet
 metadata:
   name: mynapp-rs-headless
 spec:
-  relicas: 3
+  replicas: 3
   selector:
     matchLabels:
       app: mynapp-rs-headless
@@ -13,8 +13,8 @@ spec:
         app: mynapp-rs-headless
     spec:
       containers:
-      - nmae: mynapp
+      - name: mynapp
         image: c1t1d0s7/myweb
-        prots:
+        ports:
         - containerPort: 8080
         
