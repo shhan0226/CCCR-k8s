@@ -1,0 +1,4 @@
+#! /bin/bash
+./delete
+./create
+./watch

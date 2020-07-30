@@ -1,0 +1,24 @@
+#!/bin/bash
+echo "[Get all]"
+kubectl get all
+
+
+echo -e "\n[Pvc]"
+kubectl get persistentvolumeclaims
+
+echo -e "\n[Service]"
+kubectl get services
+
+echo -e "\ne[ndpoints]"
+kubectl get endpoints
+
+
+echo -e "\n[ingresses]"
+kubectl describe ingresses
+
+echo -e "\n[secrets]"
+kubectl get secrets 
+
+echo -e "\n[Config]"
+kubectl get configmaps
+

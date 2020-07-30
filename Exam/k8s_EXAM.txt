@@ -1,0 +1,17 @@
+<Kubernetes Native - Wordpress 애플리케이션 구축>
+1. Ingress TLS Termination
+2. Service: ClusterIP
+3. Deployment: Wordpress(Replica:2, Liveness, Readiness)
+4. PVC: StorageClass(cephfs)
+5. HPA: Deployment
+6. Service: Headless
+7. Statefulset: Mysql(Replica:2, Liveness, Readiness)
+8. PVC: StorageClass(rbd)
+9. HPA: Statefulset
+10. PodAffinity 및  PodAntiAffinity (wp/db <-> wp/db)
+11. (기타) ConfigMap, Secret 등...
+전체 구성도 그림/설명
+yaml 코드/설명
+생성된 리소스 확인/설명(kubectl get/describe... po/rs/svc...)
+동작 확인이 필요한 리소스 동작 확인/설명(Scale...)
+Wordpress 동작 화면

@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: mywd-ingress-tls
+spec:
+  tls:
+  - hosts:
+    - mywd.example.com
+    secretName: ingress-tls-secret
+  rules:
+  - host: mywd.example.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: mywd-svc
+          servicePort: 80
+
+

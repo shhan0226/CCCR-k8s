@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nginx-rs
+spec:
+  replicas: 2
+  selector: 
+    matchLabels:
+      app: nginx-rs
+  template:
+    metadata:
+      labels:
+        app: nginx-rs
+    spec:
+      containers:
+      - name: nginx
+        image: c1t1d0s7/myweb:customport
+        env:
+        - name: NODE_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: nginx-conf
+              key: nodeport
+        ports:
+        - name: nginx
+          containerPort: 8090
+          protocol: TCP

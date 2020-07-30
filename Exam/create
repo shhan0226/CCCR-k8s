@@ -1,0 +1,25 @@
+#! /bin/bash
+
+#db
+kubectl create -f mydb-svc-read.yml
+kubectl create -f mydb-svc-write.yml
+kubectl create -f mydb-svc-headless.yml
+kubectl create -f mydb-sts.yml
+
+#wd
+kubectl create -f mywd-pvc-cephfs.yml
+kubectl create -f mywd-hpa.yml
+kubectl create -f mywd-dep.yml
+
+# test
+kubectl create -f svc-lb.yml
+
+#ingress
+
+kubectl create secret tls ingress-tls-secret \   
+> --key=ingress-tls/ingress-tls.key \
+> --cert=ingress-tls/ingress-tls.crt 
+secret/ingress-tls-secret created
+
+kubectl create -f mywd-svc.yml
+kubectl create -f mywd-ingress-tls.yml

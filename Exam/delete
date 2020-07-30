@@ -1,0 +1,17 @@
+#!/bin/bash
+kubectl delete -f mydb-sts.yml 
+kubectl delete -f mywd-dep.yml
+
+kubectl delete -f mydb-svc-read.yml
+kubectl delete -f mydb-svc-write.yml
+kubectl delete -f mydb-svc-headless.yml
+kubectl delete -f svc-lb.yml
+kubectl delete -f mywd-svc.yml
+kubectl delete -f mywd-ingress-tls.yml
+kubectl delete -f mywd-hpa.yml
+
+kubectl delete -f mywd-pvc-cephfs.yml
+kubectl delete pvc --all
+
+kubectl delete secrets --all
+

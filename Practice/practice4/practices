@@ -1,0 +1,20 @@
+
+devployment
+        |
+        RS                    statefulset
+        |                      |        |
+svc(LB)-Pod(wd)---------------db-0    db-1
+	|		       |	|
+       pvc(cepthf)             ------------clusterIP
+                               |        |				
+                        pvc(block)     pvc(block)
+
+
+
+
+kubectl create -f mynapp-sts-db.yml
+
+
+
+kubectl delete -f mynapp-sts-db.yml
+kubectl delete pvc data-mydb-0

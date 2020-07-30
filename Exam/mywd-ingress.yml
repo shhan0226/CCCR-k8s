@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: mywd-ing
+spec:
+  rules:
+  - host: mywd.example.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: mywd-svc
+          servicePort: 80
+
+
+# kubectl get nodes -o wide
+# node chek apfter
+# /etc/hosts --> node ip regit
