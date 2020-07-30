@@ -1,0 +1,45 @@
+#! /bin/bash
+
+## delete
+
+kubectl delete -f mywd-ingress-tls.yml
+kubectl delete -f mywd-svc.yml
+# kubectl delete secret tls ingress-tls-secret
+
+kubectl delete -f mydb-svc-headless.yml
+
+kubectl delete -f mywd-hpa.yml
+kubectl delete -f mywd-dep.yml
+kubectl delete -f mywd-pvc-cephfs.yml
+
+kubectl delete -f mydb-hpa.yml
+kubectl delete -f mydb-sts.yml
+
+kubectl delete -f mydb-svc-write.yml 
+kubectl delete -f mydb-svc-read.yml
+
+kubectl delete pvc --all
+
+#kubectl delete -f mydb-config.yml
+
+#####################################################################
+
+## create
+#kubectl create -f mydb-config.yml
+
+kubectl create -f mydb-svc-read.yml
+kubectl create -f mydb-svc-write.yml 
+
+kubectl create -f mydb-sts.yml
+kubectl create -f mydb-hpa.yml
+
+
+kubectl create -f mywd-pvc-cephfs.yml
+kubectl create -f mywd-dep.yml
+kubectl create -f mywd-hpa.yml
+
+kubectl create -f mydb-svc-headless.yml
+
+# kubectl create secret tls ingress-tls-secret --key=ingress-tls/ingress-tls.key --cert=ingress-tls/ingress-tls.crt
+kubectl create -f mywd-svc.yml
+kubectl create -f mywd-ingress-tls.yml
