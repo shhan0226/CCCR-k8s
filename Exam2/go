@@ -4,7 +4,7 @@
 
 kubectl delete -f mywd-ingress-tls.yml
 kubectl delete -f mywd-svc.yml
-# kubectl delete secret tls ingress-tls-secret
+# kubectl delete secret ingress-tls-secret
 
 kubectl delete -f mydb-svc-headless.yml
 
